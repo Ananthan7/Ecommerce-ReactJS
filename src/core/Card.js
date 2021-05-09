@@ -1,5 +1,6 @@
 import React from 'react'
 import Imagehelper from './helper/Imagehelper'
+// import {Redirect} from "react-router-dom"
 //todo
 const isAuthenticated = true
 
@@ -20,6 +21,32 @@ const Card = ({
             console.log("Login please");
         }
     };
+
+    // const getAredirect = redirect => {
+    //     if(redirect){
+    //         return <Redirect to="/cart" />
+    //     }
+    // };
+
+    const showAddToCart = addToCart => {
+        return (
+            addToCart && (
+                <button href="#" onClick={addToCart} className="btn btn-primary">Add to cart</button>
+            )
+        )
+    };
+
+    const showRemoveFromCart = removeFromCart => {
+        return(
+            removeFromCart && (
+                <button href="#" onClick={() => {
+                    // todo
+                    console.log("product removed");
+                }} className="btn btn-danger mt-2">Remove from cart</button>
+            )
+        )
+    };
+
     return (
         <div>
             <div className="card" style={{width: "18rem", color:"black"}}>
@@ -28,8 +55,8 @@ const Card = ({
                 <div className="card-body">
                     <h5 className="card-title">₹ {cartPrice}</h5>
                     <p className="card-text">{cartDescription}</p>
-                    <button href="#" className="btn btn-primary">Add to cart</button>
-                    <button href="#" className="btn btn-danger mt-2">Remove from cart</button>
+                    {showAddToCart(addToCart)}
+                    {showRemoveFromCart(removeFromCart)}
                 </div>
             </div>
         </div>
